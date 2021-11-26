@@ -219,3 +219,15 @@ if(TFM_PARTITION_FIRMWARE_UPDATE)
                 DESTINATION ${INSTALL_INTERFACE_SRC_DIR})
     endif()
 endif()
+
+if(TFM_PARTITION_EXAMPLE)
+    install(FILES       ${INTERFACE_INC_DIR}/psa/tfm_example.h
+            DESTINATION ${INSTALL_INTERFACE_INC_DIR}/psa)
+    if (TFM_PSA_API)
+        install(FILES       ${INTERFACE_SRC_DIR}/tfm_example_ipc_api.c
+                DESTINATION ${INSTALL_INTERFACE_SRC_DIR})
+    else()
+        install(FILES       ${INTERFACE_SRC_DIR}/tfm_example_func_api.c
+                DESTINATION ${INSTALL_INTERFACE_SRC_DIR})
+    endif()
+endif()

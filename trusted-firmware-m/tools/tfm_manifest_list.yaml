@@ -275,5 +275,22 @@
         ]
       }
     },
+    {
+      "name": "Example Service",
+      "short_name": "TFM_SP_EXAMPLE",
+      "manifest": "secure_fw/partitions/EXAMPLE/tfm_example.yaml",
+      "tfm_partition_ipc": true,
+      "conditional": "TFM_PARTITION_EXAMPLE",
+      "version_major": 0,
+      "version_minor": 1,
+      "pid": 273,
+      "linker_pattern": {
+      "library_list": [
+        "*EAXMPLE.*",
+        "*tfm_example.*",
+        "*tfm_example_api.*"
+      ]
+     }
+    },
   ]
 }

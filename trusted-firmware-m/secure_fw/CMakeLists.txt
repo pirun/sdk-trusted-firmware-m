@@ -29,6 +29,7 @@ add_subdirectory(partitions/psa_proxy)
 add_subdirectory(partitions/firmware_update)
 add_subdirectory(partitions/tfm_ffm11_partition)
 add_subdirectory(partitions/ns_proxy_partition)
+add_subdirectory(partitions/EXAMPLE)
 add_subdirectory(spm)
 
 target_include_directories(secure_fw
@@ -132,6 +133,7 @@ if (TFM_CODE_SHARING)
                  platform_s
                  tfm_sprt
                  tfm_spm
+                 tfm_app_rot_partition_example
     )
     if (TFM_CODE_SHARING_PATH)
         compiler_link_shared_code(tfm_s
