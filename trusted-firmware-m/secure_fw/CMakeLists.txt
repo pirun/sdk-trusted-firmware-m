@@ -32,6 +32,19 @@ add_subdirectory(partitions/ns_proxy_partition)
 add_subdirectory(partitions/EXAMPLE)
 add_subdirectory(spm)
 
+if (TFM_EXTRA_PARTITION_PATHS)
+    set(POSTFIX 1)
+
+    foreach(EXTRA_PARTITION IN LISTS TFM_EXTRA_PARTITION_PATHS)
+        get_filename_component(EXTRA_PARTITION_NAME ${EXTRA_PARTITION} NAME_WLE)
+        set(TEMP_BINARY_EXTRA_PARTITION
+            ${CMAKE_CURRENT_BINARY_DIR}/partitions/${EXTRA_PARTITION_NAME}_${POSTFIX})
+        add_subdirectory(${EXTRA_PARTITION} ${TEMP_BINARY_EXTRA_PARTITION})
+
+        math(EXPR POSTFIX "${POSTFIX} + 1")
+    endforeach()
+endif()
+
 target_include_directories(secure_fw
     INTERFACE
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
